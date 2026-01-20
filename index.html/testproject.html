@@ -1,0 +1,862 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vetri IT Systems - Employee Payslip</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #f5f7fa 0%, #e8f5e9 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .page {
+            display: none;
+        }
+
+        .page.active {
+            display: block;
+        }
+
+        /* Login Page Styles */
+        .login-container {
+            max-width: 1200px;
+            margin: 50px auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            align-items: center;
+        }
+
+        .logo-section {
+            text-align: left;
+        }
+
+        .logo-placeholder {
+            width: 80px;
+            height: 80px;
+            background: #fff;
+            border-radius: 50%;
+            border: 3px solid #2e3192;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            color: #2e3192;
+        }
+
+        .company-name {
+            color: #2e3192;
+            font-size: 32px;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        .company-tagline {
+            color: #2e3192;
+            font-size: 16px;
+            margin-bottom: 40px;
+        }
+
+        .illustration-placeholder {
+            width: 100%;
+            height: 300px;
+            background: #f0f4f8;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #666;
+            font-size: 14px;
+        }
+
+        .login-box {
+            background: #f0f9f0;
+            padding: 50px 40px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .login-header {
+            text-align: center;
+            margin-bottom: 35px;
+        }
+
+        .login-header h2 {
+            color: #2e3192;
+            font-size: 24px;
+            margin-bottom: 5px;
+        }
+
+        .login-header p {
+            color: #2e3192;
+            font-size: 16px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .input-wrapper {
+            position: relative;
+            display: flex;
+            align-items: center;
+            background: white;
+            border-radius: 8px;
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+        }
+
+        .input-wrapper i {
+            margin-right: 10px;
+            color: #2e3192;
+        }
+
+        .input-wrapper input {
+            border: none;
+            outline: none;
+            width: 100%;
+            font-size: 14px;
+            color: #333;
+        }
+
+        .input-wrapper input::placeholder {
+            color: #999;
+        }
+
+        .form-options {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 25px;
+            font-size: 14px;
+        }
+
+        .remember-me {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: #333;
+        }
+
+        .remember-me input[type="radio"] {
+            width: 18px;
+            height: 18px;
+        }
+
+        .forget-password {
+            color: #333;
+            text-decoration: none;
+        }
+
+        .forget-password:hover {
+            text-decoration: underline;
+        }
+
+        .login-btn {
+            width: 100%;
+            padding: 15px;
+            background: #2e3192;
+            color: white;
+            border: none;
+            border-radius: 25px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .login-btn:hover {
+            background: #1f2370;
+        }
+
+        /* Generator Page Styles */
+        .generator-container {
+            max-width: 500px;
+            margin: 30px auto;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+            padding: 30px;
+        }
+
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+        }
+
+        .header-left h3 {
+            color: #2e3192;
+            font-size: 14px;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        .header-left p {
+            color: #2e3192;
+            font-size: 12px;
+        }
+
+        .header-right {
+            display: flex;
+            gap: 10px;
+        }
+
+        .btn-secondary {
+            padding: 8px 20px;
+            background: white;
+            color: #2e3192;
+            border: 1px solid #2e3192;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 13px;
+        }
+
+        .btn-primary {
+            padding: 8px 20px;
+            background: #2e3192;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 13px;
+        }
+
+        .page-title {
+            text-align: center;
+            color: #333;
+            font-size: 18px;
+            margin-bottom: 25px;
+            font-weight: 600;
+        }
+
+        .company-info {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 25px;
+        }
+
+        .company-logo-small {
+            width: 50px;
+            height: 50px;
+            background: #f0f4f8;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 10px;
+            color: #666;
+        }
+
+        .company-details h4 {
+            color: #333;
+            font-size: 14px;
+            margin-bottom: 3px;
+        }
+
+        .company-details p {
+            color: #666;
+            font-size: 11px;
+            line-height: 1.4;
+        }
+
+        .month-display {
+            text-align: right;
+            color: #666;
+            font-size: 12px;
+            margin-bottom: 20px;
+        }
+
+        .section-title {
+            color: #2e3192;
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 15px;
+            margin-top: 25px;
+        }
+
+        .info-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 10px 0;
+            border-bottom: 1px solid #f0f0f0;
+            font-size: 13px;
+        }
+
+        .info-label {
+            color: #666;
+        }
+
+        .info-value {
+            color: #333;
+            font-weight: 500;
+        }
+
+        .earnings-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin-top: 15px;
+        }
+
+        .earnings-box {
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 8px;
+        }
+
+        .earnings-box h5 {
+            color: #2e3192;
+            font-size: 12px;
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+
+        .earning-item {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 8px;
+            font-size: 12px;
+        }
+
+        .earning-total {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 10px;
+            padding-top: 10px;
+            border-top: 2px solid #2e3192;
+            font-weight: bold;
+            color: #2e3192;
+            font-size: 13px;
+        }
+
+        .net-payable {
+            background: #2e3192;
+            color: white;
+            padding: 20px;
+            border-radius: 10px;
+            margin-top: 25px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .net-payable-label {
+            font-size: 14px;
+        }
+
+        .net-payable-amount {
+            font-size: 22px;
+            font-weight: bold;
+        }
+
+        .note {
+            text-align: center;
+            color: #666;
+            font-size: 11px;
+            margin-top: 20px;
+            line-height: 1.5;
+        }
+
+        .generate-btn {
+            width: 100%;
+            padding: 15px;
+            background: #2e3192;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            margin-top: 25px;
+        }
+
+        .generate-btn:hover {
+            background: #1f2370;
+        }
+
+        /* Payslip Page Styles */
+        .payslip-container {
+            max-width: 500px;
+            margin: 30px auto;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+            padding: 30px;
+        }
+
+        .action-buttons {
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+
+        .btn-print, .btn-download {
+            padding: 8px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 13px;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .btn-print {
+            background: white;
+            color: #2e3192;
+            border: 1px solid #2e3192;
+        }
+
+        .btn-download {
+            background: #2e3192;
+            color: white;
+            border: none;
+        }
+
+        .payslip-content {
+            border: 1px solid #ddd;
+            padding: 25px;
+            border-radius: 10px;
+        }
+
+        .payslip-header {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid #2e3192;
+        }
+
+        .employee-statement {
+            text-align: center;
+            color: #333;
+            font-size: 12px;
+            margin-top: 5px;
+        }
+
+        .statement-details {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin-top: 15px;
+            font-size: 11px;
+        }
+
+        .statement-details p {
+            color: #666;
+            line-height: 1.6;
+        }
+
+        .earnings-deductions {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .earnings-section, .deductions-section {
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 8px;
+        }
+
+        .section-header {
+            color: white;
+            background: #2e3192;
+            padding: 8px 12px;
+            border-radius: 5px;
+            font-size: 12px;
+            font-weight: 600;
+            margin-bottom: 10px;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .item-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 6px 0;
+            font-size: 11px;
+            color: #333;
+        }
+
+        .total-section {
+            background: #2e3192;
+            color: white;
+            padding: 8px 12px;
+            border-radius: 5px;
+            font-size: 12px;
+            font-weight: 600;
+            margin-top: 10px;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .final-net {
+            background: #2e3192;
+            color: white;
+            padding: 15px;
+            border-radius: 8px;
+            margin-top: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .final-net-amount {
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        .note-text {
+            text-align: center;
+            color: #666;
+            font-size: 10px;
+            margin-top: 15px;
+            font-style: italic;
+        }
+
+        .signature-section {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px solid #ddd;
+        }
+
+        .signature-box {
+            text-align: center;
+        }
+
+        .signature-line {
+            width: 150px;
+            border-bottom: 1px solid #333;
+            margin-bottom: 5px;
+        }
+
+        .signature-label {
+            font-size: 11px;
+            color: #666;
+        }
+
+        @media print {
+            body {
+                background: white;
+                padding: 0;
+            }
+            .action-buttons {
+                display: none;
+            }
+            .payslip-container {
+                box-shadow: none;
+                margin: 0;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .login-container {
+                grid-template-columns: 1fr;
+            }
+            .earnings-grid, .earnings-deductions {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Login Page -->
+    <div id="loginPage" class="page active">
+        <div class="login-container">
+            <div class="logo-section">
+                <div class="logo-placeholder">
+                <img src="images/logi1.png">
+                </div>
+                <h1 class="company-name">VETRI IT SYSTEMS</h1>
+                <p class="company-tagline">-Employee Payslip-</p>
+                <div class="illustration-placeholder">
+                <img src="images/logi2.png">
+                </div>
+            </div>
+            <div class="login-box">
+                <div class="login-header">
+                    <h2>Hello, Welcome Back!</h2>
+                    <p>Login to continue</p>
+                </div>
+                <form id="loginForm">
+                    <div class="form-group">
+                        <div class="input-wrapper">
+                            <span>👤</span>
+                            <input type="text" placeholder="Username/Email" required>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="input-wrapper">
+                            <span>🔒</span>
+                            <input type="password" placeholder="Password" required>
+                        </div>
+                    </div>
+                    <div class="form-options">
+                        <label class="remember-me">
+                            <input type="radio" name="remember">
+                            <span>Remember me</span>
+                        </label>
+                        <a href="#" class="forget-password">Forget Password?</a>
+                    </div>
+                    <button type="submit" class="login-btn">Login</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Employee Payslip Generator Page -->
+    <div id="generatorPage" class="page">
+        <div class="generator-container">
+            <div class="header">
+                <div class="header-left">
+                    <h3>VETRI IT SYSTEMS</h3>
+                    <p>-Employee Payslip-</p>
+                </div>
+                <div class="header-right">
+                    <button class="btn-secondary" onclick="showPage('generatorPage')">Generate Payslip</button>
+                    <button class="btn-primary" onclick="showPage('loginPage')">Logout</button>
+                </div>
+            </div>
+
+            <h2 class="page-title">EMPLOYEE PAYSLIP GENERATOR</h2>
+
+            <div class="company-info">
+                <div class="company-logo-small">
+                <img src="images/logi1.png">
+                </div>
+                <div class="company-details">
+                    <h4>VETRI IT SYSTEMS PVT LTD,</h4>
+                    <p>Omsri Complex, Second Floor,<br>
+                    Sundar Nagar, Trinaur - 627 858<br>
+                    India</p>
+                </div>
+            </div>
+
+            <div class="month-display">
+                Payslip for the Month<br>
+                <strong>OCTOBER 2025</strong>
+            </div>
+
+            <div class="section-title">Employee Pay Summary*</div>
+            
+            <div class="info-row">
+                <span class="info-label">Employee Name</span>
+                <span class="info-value">Yeshodev Chandr</span>
+            </div>
+            <div class="info-row">
+                <span class="info-label">Employee ID</span>
+                <span class="info-value">123234560</span>
+            </div>
+            <div class="info-row">
+                <span class="info-label">Pay Period</span>
+                <span class="info-value">Sep 1 2025 - Sep 30, 2025</span>
+            </div>
+            <div class="info-row">
+                <span class="info-label">Paid Days</span>
+                <span class="info-value">20</span>
+            </div>
+            <div class="info-row">
+                <span class="info-label">Loss of Pay Days</span>
+                <span class="info-value">0</span>
+            </div>
+            <div class="info-row">
+                <span class="info-label">Payment Date</span>
+                <span class="info-value">Oct 15, 2025</span>
+            </div>
+
+            <div class="section-title">Income Details*</div>
+
+            <div class="earnings-grid">
+                <div class="earnings-box">
+                    <h5>Earnings</h5>
+                    <div class="earning-item">
+                        <span>Basic</span>
+                        <span>₹ 10,000</span>
+                    </div>
+                    <div class="earning-item">
+                        <span>HRA</span>
+                        <span>₹ 5,000</span>
+                    </div>
+                    <div class="earning-total">
+                        <span>Gross Earnings</span>
+                        <span>₹ 15,000</span>
+                    </div>
+                </div>
+
+                <div class="earnings-box">
+                    <h5>Deductions</h5>
+                    <div class="earning-item">
+                        <span>Income Tax</span>
+                        <span>₹ 500</span>
+                    </div>
+                    <div class="earning-total">
+                        <span>Total Deduction</span>
+                        <span>₹ 500</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="net-payable">
+                <span class="net-payable-label">TOTAL NET PAYABLE<br>
+                    <small style="font-size: 11px;">Gross Earnings - Total Deduction</small>
+                </span>
+                <span class="net-payable-amount">₹ 15,500</span>
+            </div>
+
+            <p class="note">Amount in words : Indian Rupee Fifteen thousand Five Hundred Only</p>
+
+            <button class="generate-btn" onclick="showPage('payslipPage')">Generate Payslip</button>
+        </div>
+    </div>
+
+    <!-- Employee Payslip Page -->
+    <div id="payslipPage" class="page">
+        <div class="payslip-container">
+            <div class="header">
+                <div class="header-left">
+                    <h3>VETRI IT SYSTEMS</h3>
+                    <p>-Employee Payslip-</p>
+                </div>
+                <div class="header-right">
+                    <button class="btn-secondary" onclick="showPage('generatorPage')">Generate Payslip</button>
+                    <button class="btn-primary" onclick="showPage('loginPage')">Logout</button>
+                </div>
+            </div>
+
+            <h2 class="page-title">EMPLOYEE PAYSLIP</h2>
+
+            <div class="action-buttons">
+                <button class="btn-print" onclick="window.print()">🖨️ Print</button>
+                <button class="btn-download" onclick="downloadPDF()">⬇️ Download</button>
+            </div>
+
+            <div class="payslip-content" id="payslipContent">
+                <div class="payslip-header">
+                    <div class="company-logo-small">Logo</div>
+                    <div class="company-details">
+                        <h4>VETRI IT SYSTEMS PVT LTD,</h4>
+                        <p>Omsri Complex, Second Floor,<br>
+                        Sundar Nagar, Trinaur - 627 858, India</p>
+                    </div>
+                </div>
+
+                <div class="employee-statement">Employee Statement</div>
+
+                <div class="statement-details">
+                    <div>
+                        <p><strong>Employee Name:</strong> Yeshodev Chandr</p>
+                        <p><strong>Pay Period:</strong> Sep 1 2025 - Sep 30, 2025</p>
+                        <p><strong>Paid Days:</strong> 20</p>
+                        <p><strong>Loss of Pay Days:</strong> 0</p>
+                    </div>
+                    <div>
+                        <p><strong>Employee ID:</strong> 123234560</p>
+                        <p><strong>Payment Date:</strong> Oct 15, 2025</p>
+                    </div>
+                </div>
+
+                <div class="earnings-deductions">
+                    <div class="earnings-section">
+                        <div class="section-header">
+                            <span>Earnings</span>
+                            <span>Amount</span>
+                        </div>
+                        <div class="item-row">
+                            <span>Basic</span>
+                            <span>₹ 10,000</span>
+                        </div>
+                        <div class="item-row">
+                            <span>HRA</span>
+                            <span>₹ 5,000</span>
+                        </div>
+                        <div class="total-section">
+                            <span>Gross Earnings</span>
+                            <span>₹ 15,000</span>
+                        </div>
+                    </div>
+
+                    <div class="deductions-section">
+                        <div class="section-header">
+                            <span>Deductions</span>
+                            <span>Amount</span>
+                        </div>
+                        <div class="item-row">
+                            <span>Income Tax</span>
+                            <span>₹ 500</span>
+                        </div>
+                        <div class="total-section">
+                            <span>Total Deduction</span>
+                            <span>₹ 500</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="final-net">
+                    <span>TOTAL NET PAYABLE</span>
+                    <span class="final-net-amount">₹ 14,500</span>
+                </div>
+
+                <p class="note-text">Amount in words : Indian Rupee Fourteen thousand Five Hundred Only</p>
+
+                <div class="signature-section">
+                    <div class="signature-box">
+                        <div class="signature-line"></div>
+                        <p class="signature-label">ACHARYA DINESH KU</p>
+                        <p class="signature-label">Yeshdev Chandra<br>Mobile: +91123456789</p>
+                    </div>
+                    <div class="signature-box">
+                        <div class="signature-line"></div>
+                        <p class="signature-label">AUTHORIZED SIGNATORY</p>
+                        <p class="signature-label">Authorized signature<br>payslip@gmail.com, +91123456789</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function showPage(pageId) {
+            const pages = document.querySelectorAll('.page');
+            pages.forEach(page => page.classList.remove('active'));
+            document.getElementById(pageId).classList.add('active');
+        }
+
+        document.getElementById('loginForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            showPage('generatorPage');
+        });
+
+        function downloadPDF() {
+            window.print();
+        }
+    </script>
+</body>
+</html>
+</body>
+</html>
